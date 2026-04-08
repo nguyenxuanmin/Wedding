@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="app-content-header">
-        <div class="container-fluid" style="display: none;">
+        <div class="container-fluid" style="display:none;">
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <div class="small-box text-bg-primary">
