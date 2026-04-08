@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Blog;
 use App\Services\AdminService;
 
@@ -93,9 +92,9 @@ class BlogController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = 'blogs/'.$blog->image;
-                if (Storage::disk('public')->exists($imagePath)) {
-                    Storage::disk('public')->delete($imagePath);
+                $imagePath = public_path('storage/blogs/' . $blog->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
                 }
             }
             $messageError = $this->adminService->generateImage($_FILES["image"],'blogs');
@@ -131,9 +130,9 @@ class BlogController extends Controller
 
     public function delete(Request $request){
         $blog = Blog::find($request->id);
-        $imagePath = 'blogs/'.$blog->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        $imagePath = public_path('storage/blogs/' . $blog->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
         $blog->delete();
         return response()->json([

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
 use App\Services\AdminService;
 
@@ -91,9 +90,9 @@ class VideoController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = 'videos/'.$video->image;
-                if (Storage::disk('public')->exists($imagePath)) {
-                    Storage::disk('public')->delete($imagePath);
+                $imagePath = public_path('storage/videos/' . $video->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
                 }
             }
             $messageError = $this->adminService->generateImage($_FILES["image"],'videos');
@@ -127,9 +126,9 @@ class VideoController extends Controller
 
     public function delete(Request $request){
         $video = Video::find($request->id);
-        $imagePath = 'videos/'.$video->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        $imagePath = public_path('storage/videos/' . $video->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
         $video->delete();
         return response()->json([

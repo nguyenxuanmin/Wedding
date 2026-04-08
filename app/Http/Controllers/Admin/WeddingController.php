@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Wedding;
 use App\Models\WeddingPhoto;
 use App\Services\AdminService;
@@ -107,7 +106,11 @@ class WeddingController extends Controller
                     $typeFile = $file->getClientOriginalExtension();
                     $nameOnly = pathinfo($nameFile, PATHINFO_FILENAME);
                     $newNameFile = time() . '_' . $nameOnly . '.' . $typeFile;
-                    $path = $file->storeAs('weddings', $newNameFile, 'public');
+                    $uploadDir = public_path('storage/weddings/');
+                    if (!file_exists($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+                    $file->move($uploadDir, $newNameFile);
                     $fileWeddingPhoto = new WeddingPhoto();
                     $fileWeddingPhoto->image = $newNameFile;
                     $fileWeddingPhoto->wedding_id = $wedding->id;
@@ -125,9 +128,9 @@ class WeddingController extends Controller
     public function delete(Request $request){
         $wedding = Wedding::with('weddingPhotos')->find($request->id);
         foreach ($wedding->weddingPhotos as $weddingPhoto) {
-            $imagePath = 'weddings/'.$weddingPhoto->image;
-            if (Storage::disk('public')->exists($imagePath)) {
-                Storage::disk('public')->delete($imagePath);
+            $imagePath = public_path('storage/weddings/' . $weddingPhoto->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
             }
         }
         $wedding->delete();
@@ -138,9 +141,9 @@ class WeddingController extends Controller
 
     public function deleteWeddingPhoto(Request $request){
         $weddingPhoto = WeddingPhoto::find($request->id);
-        $imagePath = 'weddings/'.$weddingPhoto->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        $imagePath = public_path('storage/weddings/' . $weddingPhoto->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
         $weddingPhoto->delete();
         return response()->json([

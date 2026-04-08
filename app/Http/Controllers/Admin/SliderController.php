@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Slider;
 use App\Services\AdminService;
 
@@ -65,9 +64,9 @@ class SliderController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = 'sliders/'.$slider->image;
-                if (Storage::disk('public')->exists($imagePath)) {
-                    Storage::disk('public')->delete($imagePath);
+                $imagePath = public_path('storage/sliders/' . $slider->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
                 }
             }
             $messageError = $this->adminService->generateImage($_FILES["image"],'sliders');
@@ -94,9 +93,9 @@ class SliderController extends Controller
 
     public function delete(Request $request){
         $slider = Slider::find($request->id);
-        $imagePath = 'sliders/'.$slider->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        $imagePath = public_path('storage/sliders/' . $slider->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
         $slider->delete();
         return response()->json([

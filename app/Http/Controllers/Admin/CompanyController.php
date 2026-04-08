@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Company;
 use App\Services\AdminService;
 
@@ -52,9 +51,9 @@ class CompanyController extends Controller
         $company = Company::find($request->id);
 
         if (!empty($logo)) {
-            $imagePath = 'company/logo/'.$company->logo;
-            if (Storage::exists($imagePath)) {
-                Storage::delete($imagePath);
+            $imagePath = public_path('storage/company/logo/' . $company->logo);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
             }
             $messageError = $this->adminService->generateImage($_FILES["logo"],'company/logo');
             if($messageError != ""){
@@ -68,9 +67,9 @@ class CompanyController extends Controller
         }
 
         if (!empty($favicon)) {
-            $imagePath = 'company/favicon/'.$company->favicon;
-            if (Storage::exists($imagePath)) {
-                Storage::delete($imagePath);
+            $imagePath = public_path('storage/company/favicon/' . $company->favicon);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
             }
             $messageError = $this->adminService->generateImage($_FILES["favicon"],'company/favicon');
             if($messageError != ""){

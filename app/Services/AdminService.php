@@ -1,6 +1,5 @@
 <?php 
 namespace App\Services;
-use Illuminate\Support\Facades\Storage;
 
 class AdminService
 {
@@ -21,9 +20,9 @@ class AdminService
 
     public function generateImage($image,$folder) {
         $message = "";
-        $uploadOk = 1;
+
         $targetFile = $folder.'/'. basename($image['name']);
-        $uploadDir = storage_path('app/public/'.$folder.'/');
+        $uploadDir = public_path('storage/' . $folder . '/');
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $check = getimagesize($image["tmp_name"]);
         if (!is_dir($uploadDir)) {
@@ -33,7 +32,7 @@ class AdminService
             $message = "Tệp không phải là hình ảnh.";
             return $message;
         }
-        if (Storage::exists($targetFile)) {
+        if (file_exists($targetFile)) {
             $message = "Xin lỗi, tệp này đã tồn tại.";
             return $message;
         }

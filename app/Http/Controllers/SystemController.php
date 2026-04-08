@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
 use App\Services\AdminService;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
 class SystemController extends Controller

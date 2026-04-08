@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Album;
 use App\Models\AlbumPhoto;
 use App\Services\AdminService;
@@ -107,7 +106,11 @@ class AlbumController extends Controller
                     $typeFile = $file->getClientOriginalExtension();
                     $nameOnly = pathinfo($nameFile, PATHINFO_FILENAME);
                     $newNameFile = time() . '_' . $nameOnly . '.' . $typeFile;
-                    $path = $file->storeAs('albums', $newNameFile, 'public');
+                    $uploadDir = public_path('storage/albums/');
+                    if (!file_exists($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+                    $file->move($uploadDir, $newNameFile);
                     $fileAlbumPhoto = new AlbumPhoto();
                     $fileAlbumPhoto->image = $newNameFile;
                     $fileAlbumPhoto->album_id = $album->id;
@@ -125,9 +128,9 @@ class AlbumController extends Controller
     public function delete(Request $request){
         $album = Album::with('albumPhotos')->find($request->id);
         foreach ($album->albumPhotos as $albumPhoto) {
-            $imagePath = 'albums/'.$albumPhoto->image;
-            if (Storage::disk('public')->exists($imagePath)) {
-                Storage::disk('public')->delete($imagePath);
+            $imagePath = public_path('storage/albums/' . $albumPhoto->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
             }
         }
         $album->delete();
@@ -138,9 +141,9 @@ class AlbumController extends Controller
 
     public function deleteAlbumPhoto(Request $request){
         $albumPhoto = AlbumPhoto::find($request->id);
-        $imagePath = 'albums/'.$albumPhoto->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        $imagePath = public_path('storage/albums/' . $albumPhoto->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
         $albumPhoto->delete();
         return response()->json([
