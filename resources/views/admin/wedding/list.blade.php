@@ -58,7 +58,9 @@
                         <tr>
                             <td valign="middle" align="center">{{$key+1}}</td>
                             <td valign="middle">
-                                <img src="{{asset('storage/weddings/' . basename($wedding->weddingPhotos[0]->image))}}" alt="{{$wedding->name_vi}}" class="object-fit-cover w-100" style="max-height: 150px;">
+                                @if (count($wedding->weddingPhotos))
+                                    <img src="{{asset('storage/weddings/' . basename($wedding->weddingPhotos[0]->image))}}" alt="{{$wedding->name_vi}}" class="object-fit-cover w-100" style="max-height: 150px;">
+                                @endif
                             </td>
                             <td valign="middle">{{$wedding->name_vi}}</td>
                             <td valign="middle">{{$wedding->created_at->format('d/m/Y');}}</td>

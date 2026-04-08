@@ -58,7 +58,9 @@
                         <tr>
                             <td valign="middle" align="center">{{$key+1}}</td>
                             <td valign="middle">
-                                <img src="{{asset('storage/albums/' . basename($album->albumPhotos[0]->image))}}" alt="{{$album->name_vi}}" class="object-fit-cover w-100" style="max-height: 150px;">
+                                @if (count($album->albumPhotos))
+                                    <img src="{{asset('storage/albums/' . basename($album->albumPhotos[0]->image))}}" alt="{{$album->name_vi}}" class="object-fit-cover w-100" style="max-height: 150px;">
+                                @endif
                             </td>
                             <td valign="middle">{{$album->name_vi}}</td>
                             <td valign="middle">{{$album->created_at->format('d/m/Y');}}</td>
