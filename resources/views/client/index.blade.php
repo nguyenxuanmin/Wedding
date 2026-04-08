@@ -26,7 +26,9 @@
                                 <a href="{{route('wedding_detail',['slug' => $wedding->slug])}}">
                                     <div class="item-index-image">
                                         <div class="icon-hover"><i class="fa fa-mail-forward"></i></div>
-                                        <img src="{{asset('storage/weddings/' . basename($wedding->weddingPhotos[0]->image))}}" alt="{{data_get($wedding,'name_'.$lang)}}" class="object-fit-cover w-100">
+                                        @if (count($wedding->weddingPhotos))
+                                            <img src="{{asset('storage/weddings/' . basename($wedding->weddingPhotos[0]->image))}}" alt="{{data_get($wedding,'name_'.$lang)}}" class="object-fit-cover w-100">
+                                        @endif
                                     </div>
                                     <div class="item-index-title">
                                         {{data_get($wedding,'name_'.$lang)}}

@@ -88,6 +88,7 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/album/{slug}', [ClientAlbumController::class, 'detail'])->name('album_detail');
         Route::get('/blog', [ClientBlogController::class, 'show'])->name('blog');
         Route::get('/blog/{slug}', [ClientBlogController::class, 'detail'])->name('blog_detail');
+        Route::post('/', [HomeController::class, 'sendContact'])->name('send_contact');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {

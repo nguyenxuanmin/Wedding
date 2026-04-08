@@ -428,6 +428,29 @@ main{
     background-color: #ddd;
     border-radius: 5px;
 }
+#submitFormContact .form-control{
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 0;
+}
+#submitFormContact .form-control::placeholder{
+    color: #ffffff;
+}
+.btn-submit{
+    border-radius: 0;
+    border: 1px solid var(--mainColor);
+    color: var(--mainColor);
+    padding: 10px 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    position: relative;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+.btn-submit:hover{
+    background-color: var(--mainColor);
+    color: #fff;
+}
 @media (min-width: 1025px) {
     .image-lang:hover{
         opacity: 1;

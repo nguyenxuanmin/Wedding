@@ -24,6 +24,23 @@
                 <div class="footer-title">
                     {{__('system.lienhevoichungtoi')}}
                 </div>
+                <form id="submitFormContact" data-url-submit="{{route('send_contact')}}" data-url-complete="{{route('index')}}">
+                    <div class="mb-3">
+                        <input type="text" name="name" class="form-control" placeholder="{{__('system.name')}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="{{__('system.email')}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="phone" class="form-control" placeholder="{{__('system.phone')}}">
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="content" rows="5" class="form-control" placeholder="{{__('system.content')}}"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-submit">{{__('system.submit')}}</button>
+                    </div>
+                </form>
             </div>
             <div class="col-md-12 col-lg-4 mb-3 mb-lg-4">
                 <div class="footer-title">
