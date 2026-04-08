@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\IntroduceController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ClientWeddingController;
 use App\Http\Controllers\Client\ClientVideoController;
@@ -70,6 +71,10 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::post('/admin/blog/delete', [BlogController::class, 'delete'])->name('delete_blog');
         Route::get('/admin/blog/edit/{id}', [BlogController::class, 'edit'])->name('edit_blog');
         Route::get('/admin/blog/search', [BlogController::class, 'search'])->name('search_blog');
+        // Contact
+        Route::get('/admin/contact', [ContactController::class, 'show'])->name('list_contact');
+        Route::get('/admin/contact/view/{id}', [ContactController::class, 'viewContact'])->name('view_contact');
+        Route::get('/admin/contact/search', [ContactController::class, 'search'])->name('search_contact');
     });
     Route::group(['middleware' => [LoginAuth::class]], function () {
         Route::get('/admin/login', function () {return view('admin.login');})->name('login');

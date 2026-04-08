@@ -42,6 +42,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('list_contact')}}" class="nav-link">
+                        <p>Liên hệ</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('company')}}" class="nav-link">
                         <p>Thông tin công ty</p>
                     </a>

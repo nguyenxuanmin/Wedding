@@ -27,7 +27,8 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" width="100px" class="text-center">STT</th>
-                        <th scope="col" style="width:500px;">Hình ảnh</th>
+                        <th scope="col" width="350px">Hình ảnh</th>
+                        <th scope="col"></th>
                         <th scope="col" width="150px" class="text-center">Hành động</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                             <td valign="middle">
                                 <img src="@if (!empty($slider->image)){{asset('storage/sliders/' . basename($slider->image))}}@else{{asset('library/admin/default-image.png')}}@endif" alt="{{$slider->name}}" class="w-100 object-fit-cover" style="max-height: 250px;">
                             </td>
+                            <td valign="middle"></td>
                             <td valign="middle" align="center">
                                 <a href="{{route('edit_slider',[$slider->id])}}" class="btn btn-outline-info" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <button class="btn btn-outline-danger" title="Xóa" onclick="deleteItem({{$slider->id}},'slider','{{route('delete_slider')}}');"><i class="fa-solid fa-trash"></i></button>
