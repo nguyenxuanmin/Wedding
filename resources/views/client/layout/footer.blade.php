@@ -65,6 +65,6 @@
         </div>
     </div>
     <div class="footer-copyright">
-        <span>Copyright {{$company->name}} All Rights Reserved © 2025</span>
+        <span>Copyright {{$company->name}} All Rights Reserved © 2026</span>
     </div>
 </footer>
