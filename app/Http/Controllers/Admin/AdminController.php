@@ -11,16 +11,16 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function login(Request $request){
-        $email = $request->input('email');
+        $user_name = $request->input('user_name');
         $password = $request->input('password');
-        if (empty($email) || empty($password)) {
+        if (empty($user_name) || empty($password)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Email và mật khẩu không được để trống.'
+                'message' => 'Tên đăng nhập và mật khẩu không được để trống.'
             ]);
         }
 
-        $credentials = ['email' => $email, 'password' => $password];
+        $credentials = ['user_name' => $user_name, 'password' => $password];
         if (auth()->attempt($credentials)) {
             return response()->json([
                 'success' => true,

@@ -22,7 +22,7 @@
                     <p class="login-box-msg">Đăng nhập để bắt đầu phiên làm việc</p>
                     <form id="formLogIn">
                         <div class="input-group mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email" />
+                            <input type="text" name="user_name" class="form-control" placeholder="Tên đăng nhập" />
                             <div class="input-group-text"><span class="bi bi-envelope"></span></div>
                         </div>
                         <div class="input-group mb-3">

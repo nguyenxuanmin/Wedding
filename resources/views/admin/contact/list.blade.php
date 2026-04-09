@@ -50,7 +50,7 @@
                 <tbody>
                     @if (count($contacts) == 0)
                         <tr>
-                            <td valign="middle" align="center" colspan="5">Không có dữ liệu</td>
+                            <td valign="middle" align="center" colspan="7">Không có dữ liệu</td>
                         </tr>
                     @endif
                     @foreach ($contacts as $key => $contact)

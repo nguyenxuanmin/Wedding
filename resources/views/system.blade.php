@@ -63,19 +63,25 @@
                                         <div class="card-header mb-3"><div class="card-title">Thông tin admin</div></div>
                                         <div class="col-12">
                                             <div class="row">
-                                                <div class="col-12 col-md-4">
+                                                <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="nameAdmin" class="form-label">Tên</label>
                                                         <input type="text" class="form-control" name="nameAdmin" value="">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-4">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userNameAdmin" class="form-label">Tên đăng nhập</label>
+                                                        <input type="text" class="form-control" name="userNameAdmin" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="emailAdmin" class="form-label">Email</label>
                                                         <input type="text" class="form-control" name="emailAdmin" value="">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-4">
+                                                <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="passWordAdmin" class="form-label">Mật khẩu</label>
                                                         <input type="password" class="form-control" name="passWordAdmin" value="">
