@@ -106,7 +106,7 @@ class AlbumController extends Controller
                     $typeFile = $file->getClientOriginalExtension();
                     $nameOnly = pathinfo($nameFile, PATHINFO_FILENAME);
                     $newNameFile = time() . '_' . $nameOnly . '.' . $typeFile;
-                    $uploadDir = public_path('storage/albums/');
+                    $uploadDir = base_path('../public_html/storage/albums/');
                     if (!file_exists($uploadDir)) {
                         mkdir($uploadDir, 0777, true);
                     }
@@ -128,7 +128,7 @@ class AlbumController extends Controller
     public function delete(Request $request){
         $album = Album::with('albumPhotos')->find($request->id);
         foreach ($album->albumPhotos as $albumPhoto) {
-            $imagePath = public_path('storage/albums/' . $albumPhoto->image);
+            $imagePath = base_path('../public_html/storage/albums/' . $albumPhoto->image);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -141,7 +141,7 @@ class AlbumController extends Controller
 
     public function deleteAlbumPhoto(Request $request){
         $albumPhoto = AlbumPhoto::find($request->id);
-        $imagePath = public_path('storage/albums/' . $albumPhoto->image);
+        $imagePath = base_path('../public_html/storage/albums/' . $albumPhoto->image);
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }

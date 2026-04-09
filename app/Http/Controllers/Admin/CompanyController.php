@@ -51,7 +51,7 @@ class CompanyController extends Controller
         $company = Company::find($request->id);
 
         if (!empty($logo)) {
-            $imagePath = public_path('storage/company/logo/' . $company->logo);
+            $imagePath = base_path('../public_html/storage/company/logo/' . $company->logo);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -67,7 +67,7 @@ class CompanyController extends Controller
         }
 
         if (!empty($favicon)) {
-            $imagePath = public_path('storage/company/favicon/' . $company->favicon);
+            $imagePath = base_path('../public_html/storage/company/favicon/' . $company->favicon);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }

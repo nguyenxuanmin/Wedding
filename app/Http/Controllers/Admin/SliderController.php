@@ -64,7 +64,7 @@ class SliderController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = public_path('storage/sliders/' . $slider->image);
+                $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
@@ -93,7 +93,7 @@ class SliderController extends Controller
 
     public function delete(Request $request){
         $slider = Slider::find($request->id);
-        $imagePath = public_path('storage/sliders/' . $slider->image);
+        $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
