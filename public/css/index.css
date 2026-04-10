@@ -23,6 +23,7 @@ a{
 }
 main{
     flex: 1;
+    margin-top: 75px;
 }
 .wrapper{
     display: flex;
@@ -51,16 +52,11 @@ main{
     text-align: center;
 }
 #header{
-    position: relative;
+    position: fixed;
     width: 100%;
     background: #fff;
     box-shadow: 0px 0px 40px 0px rgba(22, 107, 165, 0.2);
     z-index: 99;
-    transition: ease-in-out 0.2s all;
-}
-#header.header-fixed{
-    position: fixed;
-    background: #fff;
     transition: ease-in-out 0.2s all;
 }
 .item-header{
@@ -546,5 +542,8 @@ main{
         height: 35px;
         font-size: 12px;
         line-height: 35px;
+    }
+    .form-search{
+        max-width: 350px;
     }
 }

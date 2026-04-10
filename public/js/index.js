@@ -2,10 +2,8 @@ $(document).ready(function() {
     const header = $('#header');
     window.onscroll = function () {
         if (window.pageYOffset > 130) {
-            header.addClass('header-fixed');
             $('#scrollToTop').fadeIn();
         } else {
-            header.removeClass('header-fixed');
             $('#scrollToTop').fadeOut();
         }
     };
