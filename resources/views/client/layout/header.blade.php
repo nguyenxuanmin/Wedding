@@ -6,37 +6,39 @@
         </form>
         <button class="btn btn-close-search" type="button"><i class="fa fa-times"></i></button>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="item-header">
-            <div class="item-logo">
-                <a href="{{route('index')}}">
-                    @if ($company->logo != "")
-                        <img src="{{asset('storage/company/logo/'.$company->logo)}}" alt="{{$company->name}}" class="object-fit-cover">
-                    @else
-                        LOGO
-                    @endif
-                </a>
+            <div class="item-header-left">
+                <div class="item-logo">
+                    <a href="{{route('index')}}">
+                        @if ($company->logo != "")
+                            <img src="{{asset('storage/company/logo/'.$company->logo)}}" alt="{{$company->name}}" class="object-fit-cover">
+                        @else
+                            LOGO
+                        @endif
+                    </a>
+                </div>
+                <ul class="item-nav">
+                    <li>
+                        <a href="{{route('introduce_detail')}}" @if (request()->is('gioi-thieu')) class="active" @endif>{{__('system.gioithieu')}}</a>
+                    </li>
+                    <li>
+                        <a href="{{route('wedding')}}" @if (request()->is('wedding')) class="active" @endif>{{__('system.anhcuoi')}}</a>
+                    </li>
+                    <li>
+                        <a href="{{route('video')}}" @if (request()->is('video')) class="active" @endif>Video</a>
+                    </li>
+                    <li>
+                        <a href="{{route('album')}}" @if (request()->is('album')) class="active" @endif>Album</a>
+                    </li>
+                    <li>
+                        <a href="{{route('blog')}}" @if (request()->is('blog')) class="active" @endif>Blog</a>
+                    </li>
+                    <li>
+                        <a href="#contact">{{__('system.lienhe')}}</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="item-nav">
-                <li>
-                    <a href="{{route('introduce_detail')}}" @if (request()->is('gioi-thieu')) class="active" @endif>{{__('system.gioithieu')}}</a>
-                </li>
-                <li>
-                    <a href="{{route('wedding')}}" @if (request()->is('wedding')) class="active" @endif>{{__('system.anhcuoi')}}</a>
-                </li>
-                <li>
-                    <a href="{{route('video')}}" @if (request()->is('video')) class="active" @endif>Video</a>
-                </li>
-                <li>
-                    <a href="{{route('album')}}" @if (request()->is('album')) class="active" @endif>Album</a>
-                </li>
-                <li>
-                    <a href="{{route('blog')}}" @if (request()->is('blog')) class="active" @endif>Blog</a>
-                </li>
-                <li>
-                    <a href="#contact">{{__('system.lienhe')}}</a>
-                </li>
-            </ul>
             <div class="item-header-right gap-2">
                 <a href="{{ route('change.language', ['lang' => 'vi']) }}" title="Tiếng Việt (vi)" @if ($lang == 'en') class="image-lang" @endif>
                     <img src="{{asset('library/client/vn.png')}}" alt="VI" >
