@@ -44,7 +44,7 @@
                                     <label class="form-label">Email</label>
                                     <input type="text" class="form-control" name="email" value="{{$company->email}}">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="display: none;">
                                     <label class="form-label">ID Fanpage</label>
                                     <input type="text" class="form-control" name="fanpageId" value="{{$company->fanpage_id}}">
                                 </div>
@@ -57,7 +57,7 @@
                                     <input type="text" class="form-control" name="instagram" value="{{$company->instagram}}">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Youtube</label>
+                                    <label class="form-label">Tiktok</label>
                                     <input type="text" class="form-control" name="youtube" value="{{$company->youtube}}">
                                 </div>
                             </div>
