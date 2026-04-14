@@ -7,16 +7,16 @@
                 </div>
                 <ul class="list-contact">
                     <li><i class="fa-solid fa-location-dot"></i>{{$company->address}}</li>
-                    <li><i class="fa-solid fa-phone"></i><a href="tel:{{$company->hotline}}">{{$company->hotline}}</a></li>
-                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:{{$company->email}}">{{$company->email}}</a></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:{{$company->hotline}}" target="_blank">{{$company->hotline}}</a></li>
+                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:{{$company->email}}" target="_blank">{{$company->email}}</a></li>
                     @if (!empty($company->facebook))
-                        <li><i class="fa-brands fa-facebook"></i><a href="{{$company->facebook}}">Sunset HoiAn Studio</a></li>
+                        <li><i class="fa-brands fa-facebook"></i><a href="{{$company->facebook}}" target="_blank">Sunset HoiAn Studio</a></li>
                     @endif
                     @if (!empty($company->instagram))
-                        <li><i class="fa-brands fa-instagram"></i><a href="{{$company->instagram}}">Sunset HoiAn Studio</a></li>
+                        <li><i class="fa-brands fa-instagram"></i><a href="{{$company->instagram}}" target="_blank">Sunset HoiAn Studio</a></li>
                     @endif
                     @if (!empty($company->youtube))
-                        <li><i class="fa-brands fa-tiktok"></i><a href="{{$company->youtube}}">Sunset HoiAn Studio</a></li>
+                        <li><i class="fa-brands fa-tiktok"></i><a href="{{$company->youtube}}" target="_blank">Sunset HoiAn Studio</a></li>
                     @endif
                 </ul>
             </div>
