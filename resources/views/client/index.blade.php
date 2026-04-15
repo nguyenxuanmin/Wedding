@@ -27,7 +27,7 @@
                                     <div class="item-index-image">
                                         <div class="icon-hover"><i class="fa fa-mail-forward"></i></div>
                                         @if (count($album->albumPhotos))
-                                            <img src="{{asset('storage/albums/' . basename($album->albumPhotos[0]->image))}}" alt="{{data_get($wedding,'name_'.$lang)}}" class="object-fit-cover w-100">
+                                            <img src="{{asset('storage/albums/' . basename($album->albumPhotos[0]->image))}}" alt="{{data_get($album,'name_'.$lang)}}" class="object-fit-cover w-100">
                                         @endif
                                     </div>
                                     <div class="item-index-title">
