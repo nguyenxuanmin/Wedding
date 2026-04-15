@@ -44,7 +44,7 @@
                                     <label class="form-label">Email</label>
                                     <input type="text" class="form-control" name="email" value="{{$company->email}}">
                                 </div>
-                                <div class="mb-3" style="display: none;">
+                                <div class="mb-3 d-none">
                                     <label class="form-label">ID Fanpage</label>
                                     <input type="text" class="form-control" name="fanpageId" value="{{$company->fanpage_id}}">
                                 </div>

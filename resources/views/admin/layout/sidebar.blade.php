@@ -21,7 +21,7 @@
                         <p>Giới thiệu</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none">
                     <a href="{{route('list_wedding')}}" class="nav-link">
                         <p>Ảnh cưới</p>
                     </a>
