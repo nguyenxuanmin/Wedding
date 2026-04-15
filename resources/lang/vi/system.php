@@ -11,10 +11,14 @@ return [
     'name' => 'Họ và tên',
     'email' => 'Email',
     'phone' => 'Số điện thoại',
-    'content' => 'Nội dung',
+    'content' => 'Chia sẻ thêm về chi tiết về kế hoạch buổi chụp ảnh',
     'submit' => 'Gửi',
     'not_empty' => 'không được để trống',
     'invalid' => 'không hợp lệ',
     'exist' => 'đã tồn tại',
-    'success' => 'Gửi liên hệ thành công!'
+    'success' => 'Gửi liên hệ thành công!',
+    'event_date' => 'Ngày diễn ra sự kiện',
+    'event_service' => 'Bạn quan tâm đến dịch vụ nào?',
+    'event_location' => 'Vị trí',
+    'event_cost' => 'Ước tính chi phí',
 ];

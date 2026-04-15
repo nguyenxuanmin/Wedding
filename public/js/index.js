@@ -37,6 +37,25 @@ $(document).ready(function() {
         });
     }
 
+    flatpickr("#event_date", {
+        altInput: true,
+        altFormat: "d/m/Y",
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+
+    $('#event_cost_display').on('input', function () {
+        let value = $(this).val().replace(/[^0-9]/g, '');
+
+        if (value !== '') {
+            $(this).val(Number(value).toLocaleString('en-US'));
+            $('#event_cost').val(value);
+        } else {
+            $(this).val('');
+            $('#event_cost').val('');
+        }
+    });
+
     $('.my-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,

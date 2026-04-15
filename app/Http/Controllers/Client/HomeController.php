@@ -21,36 +21,17 @@ class HomeController extends Controller
 
     public function sendContact(Request $request){
         $name = $request->name;
-        $email = $request->email;
         $phone = $request->phone;
+        $event_date = $request->event_date;
+        $event_service = $request->event_service;
+        $event_location = $request->event_location;
+        $event_cost = $request->event_cost;
         $content = $request->content;
 
         if (empty($name)) {
             return response()->json([
                 'success' => false,
                 'message' => __('system.name') . ' ' . __('system.not_empty')
-            ]);
-        }
-
-        if (empty($email)) {
-            return response()->json([
-                'success' => false,
-                'message' => __('system.email') . ' ' . __('system.not_empty')
-            ]);
-        }else{
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return response()->json([
-                    'success' => false,
-                    'message' => $email. ' ' . __('system.email') . ' ' . __('system.invalid')
-                ]);
-            }
-        }
-
-        $contactExist = Contact::where('email', $email)->first();
-        if ($contactExist) {
-            return response()->json([
-                'success' => false,
-                'message' => __('system.email') . ' ' . __('system.exist')
             ]);
         }
 
@@ -68,10 +49,24 @@ class HomeController extends Controller
             }
         }
 
+        if (empty($event_date)) {
+            return response()->json([
+                'success' => false,
+                'message' => __('system.event_date') . ' ' . __('system.not_empty')
+            ]);
+        }
+
+        if (empty($event_cost)) {
+            $event_cost = 0;
+        }
+
         $contact = new Contact();
         $contact->name = $name;
-        $contact->email = $email;
         $contact->phone = $phone;
+        $contact->event_date = $event_date;
+        $contact->event_service = $event_service;
+        $contact->event_location = $event_location;
+        $contact->event_cost = $event_cost;
         $contact->content = $content;
         $contact->save();
 

@@ -40,26 +40,30 @@
                     <tr>
                         <th scope="col" width="100px" class="text-center">STT</th>
                         <th scope="col">Tên</th>
-                        <th scope="col" width="350px" class="text-center">Email</th>
-                        <th scope="col" width="250px" class="text-center">Số điện thoại</th>
-                        <th scope="col" width="250px" class="text-center">Ngày gửi</th>
-                        <th scope="col" width="150px" class="text-center">Trạng thái</th>
+                        <th scope="col" width="180px" class="text-center">Số điện thoại</th>
+                        <th scope="col" width="200px" class="text-center">Ngày diễn ra sự kiện</th>
+                        <th scope="col" width="200px" class="text-center">Dịch vụ</th>
+                        <th scope="col" width="200px" class="text-center">Vị trí</th>
+                        <th scope="col" width="150px" class="text-center">Chi phí</th>
+                        <th scope="col" width="100px" class="text-center">Trạng thái</th>
                         <th scope="col" width="150px" class="text-center">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (count($contacts) == 0)
                         <tr>
-                            <td valign="middle" align="center" colspan="7">Không có dữ liệu</td>
+                            <td valign="middle" align="center" colspan="9">Không có dữ liệu</td>
                         </tr>
                     @endif
                     @foreach ($contacts as $key => $contact)
                         <tr>
                             <td valign="middle" align="center">{{$key+1}}</td>
                             <td valign="middle">{{$contact->name}}</td>
-                            <td valign="middle" align="center">{{$contact->email}}</td>
                             <td valign="middle" align="center">{{$contact->phone}}</td>
-                            <td valign="middle" align="center">{{$contact->created_at->format('d/m/Y')}}</td>
+                            <td valign="middle" align="center">{{date('d/m/Y', strtotime($contact->event_date))}}</td>
+                            <td valign="middle" align="center">{{$contact->event_service}}</td>
+                            <td valign="middle" align="center">{{$contact->event_location}}</td>
+                            <td valign="middle" align="center">{{number_format($contact->event_cost)}}</td>
                             <td valign="middle" align="center">
                                 <span class="badge bg-{{ $contact->is_read ? 'success' : 'secondary' }}">
                                     {{ $contact->is_read ? 'Đã đọc' : 'Chưa đọc' }}

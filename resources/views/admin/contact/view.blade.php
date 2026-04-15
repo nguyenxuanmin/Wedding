@@ -27,23 +27,39 @@
                         <div class="col-12 mb-3">
                             <a href="{{route('list_contact')}}" class="btn btn-dark">Trở lại</a>
                         </div>
-                        <div class="col-12 col-md-6 mb-3">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                     <label class="form-label">Họ và tên</label>
                                     <input type="text" class="form-control" name="name" value="{{$contact->name}}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input type="text" class="form-control" name="email" value="{{$contact->email}}" readonly>
+                                    <label class="form-label">Ngày diễn ra sự kiện</label>
+                                    <input type="text" class="form-control" name="email" value="{{date('d/m/Y', strtotime($contact->event_date))}}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone" value="{{$contact->phone}}" readonly>
+                                    <label class="form-label">Vị trí</label>
+                                    <input type="text" class="form-control" name="email" value="{{$contact->event_location}}" readonly>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Nội dung liên hệ</label>
-                                    <textarea class="form-control" name="message" rows="4" readonly>{{$contact->content}}</textarea>
-                                </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-control" name="phone" value="{{$contact->phone}}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Dịch vụ</label>
+                                <input type="text" class="form-control" name="email" value="{{$contact->event_service}}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Chi phí</label>
+                                <input type="text" class="form-control" name="email" value="{{number_format($contact->event_cost)}}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Nội dung liên hệ</label>
+                                <textarea class="form-control" name="message" rows="4" readonly>{{$contact->content}}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

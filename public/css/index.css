@@ -433,6 +433,9 @@ main{
 #submitFormContact .form-control::placeholder{
     color: #333;
 }
+#submitFormContact label{
+    font-size: 12px;
+}
 .btn-submit{
     border-radius: 0;
     border: 1px solid var(--mainColor);

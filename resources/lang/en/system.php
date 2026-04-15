@@ -11,10 +11,14 @@ return [
     'name' => 'Name',
     'email' => 'Email',
     'phone' => 'Phone',
-    'content' => 'Content',
+    'content' => 'Please share more details about the photoshoot plan',
     'submit' => 'Submit',
     'not_empty' => 'must not be empty',
     'invalid' => 'is invalid',
     'exist' => 'already exists',
-    'success' => 'Send contact successfully!'
+    'success' => 'Send contact successfully!',
+    'event_date' => 'Date of the event',
+    'event_service' => 'Which service are you interested in?',
+    'event_location' => 'Location',
+    'event_cost' => 'Estimated costs',
 ];

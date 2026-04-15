@@ -28,7 +28,7 @@
                                 @foreach ($contacts as $contact)
                                     <div class="col-3 p-2">
                                         <img class="img-fluid rounded-circle h-50" src="{{asset('library/admin/user-default.jpg')}}" alt="{{ $contact->name }}"/>
-                                        <a class="btn fw-bold fs-7 text-secondary text-truncate w-100 p-0" href="{{route('edit_slider',[$slider->id])}}">
+                                        <a class="btn fw-bold fs-7 text-secondary text-truncate w-100 p-0" href="{{route('view_contact',[$contact->id])}}">
                                             {{ $contact->name }}
                                         </a>
                                         <div class="fs-8">{{ $contact->created_at->format('d/m/Y') }}</div>

@@ -21,6 +21,7 @@
         <script type='text/javascript' src='{{asset('unitegallery/js/unitegallery.min.js')}}'></script>	
         <link rel='stylesheet' href='{{asset('unitegallery/css/unite-gallery.css')}}' type='text/css' />
         <script type='text/javascript' src='{{asset('unitegallery/themes/tiles/ug-theme-tiles.js')}}'></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     </head>
     <body>
         <div class="wrapper">
@@ -38,6 +39,7 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="{{asset('js/index.js')}}"></script>
         
         <script>

@@ -25,17 +25,34 @@
                     {{__('system.lienhevoichungtoi')}}
                 </div>
                 <form id="submitFormContact" data-url-submit="{{route('send_contact')}}" data-url-complete="{{route('index')}}">
-                    <div class="mb-3">
-                        <input type="text" name="name" class="form-control" placeholder="{{__('system.name')}}">
+                    <div class="mb-2">
+                        <label for="name">{{__('system.name')}}</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="phone">{{__('system.phone')}}</label>
+                        <input type="text" name="phone" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="event_date">{{__('system.event_date')}}</label>
+                        <input type="type" id="event_date" name="event_date" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="event_service">{{__('system.event_service')}}</label>
+                        <input type="text" name="event_service" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="event_location">{{__('system.event_location')}}</label>
+                        <input type="text" name="event_location" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="event_cost">{{__('system.event_cost')}} (VND)</label>
+                        <input type="text" id="event_cost_display" name="event_cost_dispay" class="form-control">
+                        <input type="hidden" name="event_cost" id="event_cost">
                     </div>
                     <div class="mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="{{__('system.email')}}">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" name="phone" class="form-control" placeholder="{{__('system.phone')}}">
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="content" rows="5" class="form-control" placeholder="{{__('system.content')}}"></textarea>
+                        <label for="content">{{__('system.content')}}</label>
+                        <textarea name="content" rows="4" class="form-control"></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn-submit">{{__('system.submit')}}</button>
