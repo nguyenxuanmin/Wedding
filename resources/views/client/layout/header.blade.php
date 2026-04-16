@@ -23,16 +23,19 @@
                         <a href="{{route('introduce_detail')}}" @if (request()->is('gioi-thieu')) class="active" @endif>{{__('system.gioithieu')}}</a>
                     </li>
                     <li class="d-none">
-                        <a href="{{route('wedding')}}" @if (request()->is('wedding')) class="active" @endif>{{__('system.anhcuoi')}}</a>
+                        <a href="{{route('wedding')}}" @if (request()->is('wedding*')) class="active" @endif>{{__('system.anhcuoi')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('video')}}" @if (request()->is('video')) class="active" @endif>Video</a>
+                        <a href="{{route('video')}}" @if (request()->is('video*')) class="active" @endif>Video</a>
                     </li>
                     <li>
-                        <a href="{{route('album')}}" @if (request()->is('album')) class="active" @endif>Album</a>
+                        <a href="{{route('album')}}" @if (request()->is('album*')) class="active" @endif>Album</a>
                     </li>
                     <li>
-                        <a href="{{route('blog')}}" @if (request()->is('blog')) class="active" @endif>Blog</a>
+                        <a href="{{route('faq_detail')}}" @if (request()->is('faq')) class="active" @endif>FAQ</a>
+                    </li>
+                    <li>
+                        <a href="{{route('blog')}}" @if (request()->is('blog*')) class="active" @endif>Blog</a>
                     </li>
                     <li>
                         <a href="#contact">{{__('system.lienhe')}}</a>
@@ -76,6 +79,9 @@
             </li>
             <li>
                 <a href="{{route('album')}}">Album</a>
+            </li>
+            <li>
+                <a href="{{route('faq_detail')}}">FAQ</a>
             </li>
             <li>
                 <a href="{{route('blog')}}">Blog</a>

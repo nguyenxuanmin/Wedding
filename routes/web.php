@@ -18,12 +18,14 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ClientWeddingController;
 use App\Http\Controllers\Client\ClientVideoController;
 use App\Http\Controllers\Client\ClientIntroduceController;
 use App\Http\Controllers\Client\ClientAlbumController;
 use App\Http\Controllers\Client\ClientBlogController;
+use App\Http\Controllers\Client\ClientFaqController;
 
 Route::group(['middleware' => [SystemAuth::class]], function () {
     Route::group(['middleware' => [AdminAuth::class]], function () {
@@ -75,6 +77,9 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/admin/contact', [ContactController::class, 'show'])->name('list_contact');
         Route::get('/admin/contact/view/{id}', [ContactController::class, 'viewContact'])->name('view_contact');
         Route::get('/admin/contact/search', [ContactController::class, 'search'])->name('search_contact');
+        // FAQ
+        Route::get('/admin/faq', [FaqController::class, 'show'])->name('faq');
+        Route::post('/admin/faq/save', [FaqController::class, 'save'])->name('save_faq');
     });
     Route::group(['middleware' => [LoginAuth::class]], function () {
         Route::get('/admin/login', function () {return view('admin.login');})->name('login');
@@ -94,6 +99,7 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/blog', [ClientBlogController::class, 'show'])->name('blog');
         Route::get('/blog/{slug}', [ClientBlogController::class, 'detail'])->name('blog_detail');
         Route::post('/', [HomeController::class, 'sendContact'])->name('send_contact');
+        Route::get('/faq', [ClientFaqController::class, 'show'])->name('faq_detail');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {

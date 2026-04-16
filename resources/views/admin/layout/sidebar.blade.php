@@ -37,6 +37,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('faq')}}" class="nav-link">
+                        <p>FAQ</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('list_blog')}}" class="nav-link">
                         <p>Blog</p>
                     </a>
