@@ -64,7 +64,11 @@ class SliderController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
+                if (app()->environment('local')) {
+                    $imagePath = public_path('storage/sliders/' . $slider->image);
+                } else {
+                    $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
+                }
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
@@ -93,7 +97,11 @@ class SliderController extends Controller
 
     public function delete(Request $request){
         $slider = Slider::find($request->id);
-        $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
+        if (app()->environment('local')) {
+            $imagePath = public_path('storage/sliders/' . $slider->image);
+        } else {
+            $imagePath = base_path('../public_html/storage/sliders/' . $slider->image);
+        }
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }

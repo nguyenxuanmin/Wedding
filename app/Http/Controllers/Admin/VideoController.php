@@ -90,7 +90,11 @@ class VideoController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = base_path('../public_html/storage/videos/' . $video->image);
+                if (app()->environment('local')) {
+                    $imagePath = public_path('storage/videos/' . $video->image);
+                } else {
+                    $imagePath = base_path('../public_html/storage/videos/' . $video->image);
+                }
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
@@ -126,7 +130,11 @@ class VideoController extends Controller
 
     public function delete(Request $request){
         $video = Video::find($request->id);
-        $imagePath = base_path('../public_html/storage/videos/' . $video->image);
+        if (app()->environment('local')) {
+            $imagePath = public_path('storage/videos/' . $video->image);
+        } else {
+            $imagePath = base_path('../public_html/storage/videos/' . $video->image);
+        }
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }

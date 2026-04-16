@@ -92,7 +92,11 @@ class BlogController extends Controller
 
         if (!empty($image)) {
             if($action == "edit"){
-                $imagePath = base_path('../public_html/storage/blogs/' . $blog->image);
+                if (app()->environment('local')) {
+                    $imagePath = public_path('storage/blogs/' . $blog->image);
+                } else {
+                    $imagePath = base_path('../public_html/storage/blogs/' . $blog->image);
+                }
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
@@ -130,7 +134,11 @@ class BlogController extends Controller
 
     public function delete(Request $request){
         $blog = Blog::find($request->id);
-        $imagePath = base_path('../public_html/storage/blogs/' . $blog->image);
+        if (app()->environment('local')) {
+            $imagePath = public_path('storage/blogs/' . $blog->image);
+        } else {
+            $imagePath = base_path('../public_html/storage/blogs/' . $blog->image);
+        }
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
