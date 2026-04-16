@@ -22,7 +22,8 @@ class AdminService
         $message = "";
 
         $targetFile = $folder.'/'. basename($image['name']);
-        $uploadDir = base_path('../public_html/storage/' . $folder . '/');
+        //$uploadDir = base_path('../public_html/storage/' . $folder . '/');
+        $uploadDir = storage_path('app/public/' . $folder);;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $check = getimagesize($image["tmp_name"]);
         if (!is_dir($uploadDir)) {
