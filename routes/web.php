@@ -26,6 +26,7 @@ use App\Http\Controllers\Client\ClientIntroduceController;
 use App\Http\Controllers\Client\ClientAlbumController;
 use App\Http\Controllers\Client\ClientBlogController;
 use App\Http\Controllers\Client\ClientFaqController;
+use App\Http\Controllers\Client\ClientFeedbackController;
 
 Route::group(['middleware' => [SystemAuth::class]], function () {
     Route::group(['middleware' => [AdminAuth::class]], function () {
@@ -100,6 +101,8 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/blog/{slug}', [ClientBlogController::class, 'detail'])->name('blog_detail');
         Route::post('/', [HomeController::class, 'sendContact'])->name('send_contact');
         Route::get('/faq', [ClientFaqController::class, 'show'])->name('faq_detail');
+        Route::get('/danh-gia', [ClientFeedbackController::class, 'show'])->name('feedback');
+        Route::post('/danh-gia', [ClientFeedbackController::class, 'feedback'])->name('send_feedback');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {

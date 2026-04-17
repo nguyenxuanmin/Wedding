@@ -21,4 +21,12 @@ return [
     'event_service' => 'Which service are you interested in?',
     'event_location' => 'Location',
     'event_cost' => 'Estimated costs',
+    'feedback' => 'Feedback',
+    'content_feedback' => 'In order to improve and make the service quality perfectly to serve our customers better, we expect to receive your testimonials. Hope you will spend some time to give us your feedback. Sincerely thanks!',
+    'title' => 'Title',
+    'feel' => 'Feedback',
+    'image_feedback' => 'Attached image',
+    'alert_image_feedback' => 'Select a maximum of 3 photos.',
+    'rated' => 'You have rated for today.',
+    'thanks' => 'Thank you for your feedback!',
 ];

@@ -38,6 +38,9 @@
                         <a href="{{route('blog')}}" @if (request()->is('blog*')) class="active" @endif>Blog</a>
                     </li>
                     <li>
+                        <a href="{{route('feedback')}}" @if (request()->is('danh-gia')) class="active" @endif>{{__('system.feedback')}}</a>
+                    </li>
+                    <li>
                         <a href="#contact">{{__('system.lienhe')}}</a>
                     </li>
                 </ul>
@@ -85,6 +88,9 @@
             </li>
             <li>
                 <a href="{{route('blog')}}">Blog</a>
+            </li>
+            <li>
+                <a href="{{route('feedback')}}">{{__('system.feedback')}}</a>
             </li>
             <li>
                 <a href="#contact">{{__('system.lienhe')}}</a>

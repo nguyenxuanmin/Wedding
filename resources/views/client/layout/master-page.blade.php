@@ -40,6 +40,11 @@
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <script>
+            window.lang = @json(__('system'));
+        </script>
+
         <script src="{{asset('js/index.js')}}"></script>
         
         <script>
@@ -63,53 +68,6 @@
                 js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0';
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-            const csrfToken = $('meta[name="csrf-token"]').attr('content');
-            $(document).ready(function() {
-                if ($('#submitFormContact').length) {
-                    let urlSubmit = $('#submitFormContact').data('url-submit');
-                    let urlComplete = $('#submitFormContact').data('url-complete');
-                    $('#submitFormContact').on('submit', function(e){
-                        e.preventDefault();
-                        var formData = new FormData(this);
-                        $.ajax({
-                            url: urlSubmit,
-                            headers: {
-                                'X-CSRF-TOKEN': csrfToken
-                            },
-                            type: 'POST',
-                            data: formData,
-                            contentType: false,
-                            processData: false, 
-                            success: function(response) {
-                                if (response.success == true) {
-                                    Swal.fire({
-                                        text: response.message,
-                                        icon: "success",
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    }).then((result) => {
-                                        if(urlComplete != ""){
-                                            location.href = urlComplete;
-                                        }else{
-                                            location.reload();
-                                        }
-                                    });
-                                }else{
-                                    Swal.fire({
-                                        text: response.message,
-                                        icon: "error",
-                                        showConfirmButton: false,
-                                        timer: 2000
-                                    });
-                                }
-                            },
-                            error: function(xhr) {
-                                console.log(xhr);
-                            }
-                        });
-                    });
-                }
-            });
         </script>
     </body>
 </html>
