@@ -516,7 +516,7 @@ main{
     align-items: center;
     gap: 30px;
     border-radius: 10px;
-    border: 1px solid #333;
+    border: 1px solid #555;
     justify-content: center;
     padding: 15px 0;
 }
@@ -550,6 +550,7 @@ main{
 .avg {
     font-size: 30px;
     font-weight: bold;
+    color: #f5b301;
 }
 .stars {
     color: #f5b301;

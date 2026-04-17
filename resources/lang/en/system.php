@@ -25,8 +25,9 @@ return [
     'content_feedback' => 'In order to improve and make the service quality perfectly to serve our customers better, we expect to receive your testimonials. Hope you will spend some time to give us your feedback. Sincerely thanks!',
     'title' => 'Title',
     'feel' => 'Feedback',
-    'image_feedback' => 'Attached image',
+    'image_feedback' => 'Attach photos (maximum 3 photos)',
     'alert_image_feedback' => 'Select a maximum of 3 photos.',
     'rated' => 'You have rated for today.',
     'thanks' => 'Thank you for your feedback!',
+    'feedbacks' => 'feedbacks',
 ];

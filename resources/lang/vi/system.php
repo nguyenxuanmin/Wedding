@@ -25,8 +25,9 @@ return [
     'content_feedback' => 'Để cải thiện chất lượng dịch vụ ngày một hoàn hảo hơn, chúng tôi hy vọng sẽ nhận được lời đánh giá của bạn. Hy vọng bạn sẽ dành thời gian để viết vài dòng về chúng tôi nhé. Sunset HoiAn Studio thật lòng cảm ơn!',
     'title' => 'Tiêu đề',
     'feel' => 'Cảm nhận',
-    'image_feedback' => 'Đính kèm ảnh',
+    'image_feedback' => 'Ảnh đính kèm (tối đa 3 ảnh)',
     'alert_image_feedback' => 'Chỉ chọn tối đa 3 ảnh.',
     'rated' => 'Bạn đã đánh giá cho ngày hôm nay.',
     'thanks' => 'Cảm ơn đánh giá của bạn!',
+    'feedbacks' => 'đánh giá',
 ];
