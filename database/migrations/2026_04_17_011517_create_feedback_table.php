@@ -20,6 +20,7 @@ return new class extends Migration
             $table->tinyInteger('rating')->default(5);
             $table->string('user_agent')->nullable();
             $table->date('feedback_date');
+            $table->boolean('is_hidden')->default(false);
             $table->timestamps();
         });
     }
