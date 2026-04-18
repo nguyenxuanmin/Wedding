@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FacebookController extends Controller
 {
@@ -19,21 +20,19 @@ class FacebookController extends Controller
     {
         try {
             $fbUser = Socialite::driver('facebook')->user();
-
             $user = User::where('facebook_id', $fbUser->id)->first();
-
             if (!$user) {
                 $user = User::create([
                     'name' => $fbUser->name,
                     'user_name' => $fbUser->name,
-                    'email' => '',
+                    'email' => $fbUser->email ?? $fbUser->id . '@facebook.com',
                     'facebook_id' => $fbUser->id,
-                    'password' => bcrypt('123456dummy')
+                    'password' => Hash::make('123456'),
                 ]);
             }
-
-            Auth::login($user);
-
+            Auth::logout();
+            Auth::login($user, true);
+            session()->regenerate();
             return redirect()->route('feedback');
         } catch (\Exception $e) {
             return redirect()->route('feedback')->with('error', 'Login failed');

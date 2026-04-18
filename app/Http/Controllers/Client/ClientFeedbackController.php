@@ -8,16 +8,21 @@ use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use App\Models\Feedback;
 use App\Models\FeedbackPhoto;
-use App\Services\AdminService;
 
 class ClientFeedbackController extends Controller
 {
     public function __construct()
     {
-        $this->adminService = new AdminService;
+        $this->user = auth()->user();
     }
 
     public function show(){
+        $name_feedback = '';
+        $facebook_id = '';
+        if ($this->user && $this->user->role === 'user') {
+            $name_feedback = $this->user->name;
+            $facebook_id = $this->user->facebook_id;
+        }
         $titlePage = __('system.feedback');
         $feedbacks = Feedback::with('feedbackPhotos')->orderBy('created_at','desc')->paginate(15);
         $totalFeedback = Feedback::count();
@@ -28,12 +33,13 @@ class ClientFeedbackController extends Controller
             'feedbacks' => $feedbacks,
             'totalFeedback' => $totalFeedback,
             'avgFeedback' => $avgFeedback,
-            'stats' => $stats
+            'stats' => $stats,
+            'name_feedback' => $name_feedback,
+            'facebook_id' => $facebook_id
         ]);
     }
 
     public function feedback(Request $request){
-        $user = auth()->user();
         $name = $request->name_feedback;
         $title = $request->title_feedback;
         $rating = $request->rating;
@@ -41,7 +47,7 @@ class ClientFeedbackController extends Controller
         $imageFeedbacks = $request->file('image_feedback');
         $userAgent = $request->userAgent();
         $today = Carbon::today();
-        $facebook_id = '';
+        $facebook_id = $request->facebook_id;
 
         if (empty($name)) {
             return response()->json([
@@ -64,11 +70,8 @@ class ClientFeedbackController extends Controller
             ]);
         }
 
-        $exists = Feedback::where('user_agent', $userAgent)->where('feedback_date', $today)->exists();
-
-        if ($user && $user->role === 'user') {
-            $facebook_id = $user->facebook_id;
-            $exists = Feedback::where('facebook_id', $facebook_id)
+        if ($this->user && $this->user->role === 'user') {
+            $exists = Feedback::where('facebook_id', $this->user->facebook_id)
                 ->where('feedback_date', $today)
                 ->exists();
         } else {

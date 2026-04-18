@@ -599,6 +599,11 @@ main{
 .select_feedback a:hover{
     color: red;
 }
+.disabled-link{
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 @media (min-width: 1025px) {
     .image-lang:hover{
         opacity: 1;
