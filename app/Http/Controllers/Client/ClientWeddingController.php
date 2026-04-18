@@ -35,18 +35,4 @@ class ClientWeddingController extends Controller
             'content' => $content
         ]);
     }
-
-    public function search(Request $request){
-        $infoSearch = $request->search;
-        $titlePage = __('system.ketquatimkiem') . ': ' . $infoSearch;
-        $weddings = Wedding::with('weddingPhotos')
-        ->where('name_vi','LIKE','%'.$infoSearch.'%')
-        ->orWhere('name_en','LIKE','%'.$infoSearch.'%')
-        ->orderBy('created_at','desc')->paginate(20);
-        return view('client.wedding',[
-            'titlePage' => $titlePage,
-            'weddings' => $weddings,
-            'infoSearch' => $infoSearch
-        ]);
-    }
 }

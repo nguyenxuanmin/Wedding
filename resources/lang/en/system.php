@@ -30,4 +30,7 @@ return [
     'rated' => 'You have rated for today.',
     'thanks' => 'Thank you for your feedback!',
     'feedbacks' => 'feedbacks',
+    'select_feedback1' => 'You can use the form below or',
+    'select_feedback2' => 'use your Facebook account',
+    'select_feedback3' => 'to submit your feedback',
 ];

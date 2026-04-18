@@ -30,4 +30,7 @@ return [
     'rated' => 'Bạn đã đánh giá cho ngày hôm nay.',
     'thanks' => 'Cảm ơn đánh giá của bạn!',
     'feedbacks' => 'đánh giá',
+    'select_feedback1' => 'Bạn có thể sử dụng form bên dưới hoặc',
+    'select_feedback2' => 'sử dụng tài khoản facebook',
+    'select_feedback3' => 'để đánh giá',
 ];

@@ -35,4 +35,18 @@ class ClientAlbumController extends Controller
             'content' => $content
         ]);
     }
+
+    public function search(Request $request){
+        $infoSearch = $request->search;
+        $titlePage = __('system.ketquatimkiem') . ': ' . $infoSearch;
+        $albums = Album::with('albumPhotos')
+        ->where('name_vi','LIKE','%'.$infoSearch.'%')
+        ->orWhere('name_en','LIKE','%'.$infoSearch.'%')
+        ->orderBy('created_at','desc')->paginate(20);
+        return view('client.album',[
+            'titlePage' => $titlePage,
+            'albums' => $albums,
+            'infoSearch' => $infoSearch
+        ]);
+    }
 }

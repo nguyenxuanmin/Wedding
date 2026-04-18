@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-xl-8 mb-3">
                     <p>{{__('system.content_feedback')}}</p>
+                    <div class="select_feedback">{{__('system.select_feedback1')}} <a href="">{{__('system.select_feedback2')}}</a> {{__('system.select_feedback3')}}.</div>
                     <form id="submitFormFeedback" data-url-submit="{{route('send_feedback')}}" data-url-complete="{{route('index')}}">
                         <div class="mb-2">
                             <label>{{__('system.name')}}</label>

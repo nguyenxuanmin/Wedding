@@ -89,7 +89,6 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
 
     Route::middleware([SetLocale::class])->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('index');
-        Route::get('/search', [ClientWeddingController::class, 'search'])->name('search');
         Route::get('/wedding', [ClientWeddingController::class, 'show'])->name('wedding');
         Route::get('/wedding/{slug}', [ClientWeddingController::class, 'detail'])->name('wedding_detail');
         Route::get('/video', [ClientVideoController::class, 'show'])->name('video');
@@ -97,6 +96,7 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/gioi-thieu', [ClientIntroduceController::class, 'show'])->name('introduce_detail');
         Route::get('/album', [ClientAlbumController::class, 'show'])->name('album');
         Route::get('/album/{slug}', [ClientAlbumController::class, 'detail'])->name('album_detail');
+        Route::get('/search', [ClientAlbumController::class, 'search'])->name('search');
         Route::get('/blog', [ClientBlogController::class, 'show'])->name('blog');
         Route::get('/blog/{slug}', [ClientBlogController::class, 'detail'])->name('blog_detail');
         Route::post('/', [HomeController::class, 'sendContact'])->name('send_contact');
