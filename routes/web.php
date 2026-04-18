@@ -27,6 +27,7 @@ use App\Http\Controllers\Client\ClientAlbumController;
 use App\Http\Controllers\Client\ClientBlogController;
 use App\Http\Controllers\Client\ClientFaqController;
 use App\Http\Controllers\Client\ClientFeedbackController;
+use App\Http\Controllers\Auth\FacebookController;
 
 Route::group(['middleware' => [SystemAuth::class]], function () {
     Route::group(['middleware' => [AdminAuth::class]], function () {
@@ -103,6 +104,8 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/faq', [ClientFaqController::class, 'show'])->name('faq_detail');
         Route::get('/danh-gia', [ClientFeedbackController::class, 'show'])->name('feedback');
         Route::post('/danh-gia', [ClientFeedbackController::class, 'feedback'])->name('send_feedback');
+        Route::get('/auth/facebook', [FacebookController::class, 'redirect'])->name('login_facebook');
+        Route::get('/auth/facebook/callback', [FacebookController::class, 'callback'])->name('callback');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {

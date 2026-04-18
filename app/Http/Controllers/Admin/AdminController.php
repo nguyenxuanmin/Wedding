@@ -20,7 +20,7 @@ class AdminController extends Controller
             ]);
         }
 
-        $credentials = ['user_name' => $user_name, 'password' => $password];
+        $credentials = ['user_name' => $user_name, 'password' => $password, 'role' => 'admin'];
         if (auth()->attempt($credentials)) {
             return response()->json([
                 'success' => true,

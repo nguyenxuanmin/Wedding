@@ -33,6 +33,7 @@ class ClientFeedbackController extends Controller
     }
 
     public function feedback(Request $request){
+        $user = auth()->user();
         $name = $request->name_feedback;
         $title = $request->title_feedback;
         $rating = $request->rating;
@@ -40,6 +41,7 @@ class ClientFeedbackController extends Controller
         $imageFeedbacks = $request->file('image_feedback');
         $userAgent = $request->userAgent();
         $today = Carbon::today();
+        $facebook_id = '';
 
         if (empty($name)) {
             return response()->json([
@@ -64,6 +66,17 @@ class ClientFeedbackController extends Controller
 
         $exists = Feedback::where('user_agent', $userAgent)->where('feedback_date', $today)->exists();
 
+        if ($user && $user->role === 'user') {
+            $facebook_id = $user->facebook_id;
+            $exists = Feedback::where('facebook_id', $facebook_id)
+                ->where('feedback_date', $today)
+                ->exists();
+        } else {
+            $exists = Feedback::where('user_agent', $userAgent)
+                ->where('feedback_date', $today)
+                ->exists();
+        }
+
         if ($exists) {
             return response()->json([
                 'success' => false,
@@ -78,6 +91,7 @@ class ClientFeedbackController extends Controller
         $feedback->rating = $rating;
         $feedback->user_agent = $userAgent;
         $feedback->feedback_date = now()->toDateString();
+        $feedback->facebook_id = $facebook_id;
         $feedback->save();
 
         if(!empty($imageFeedbacks)){

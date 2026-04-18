@@ -106,6 +106,7 @@ class SystemController extends Controller
         $user->name = $nameAdmin;
         $user->user_name = $userNameAdmin;
         $user->email = $emailAdmin;
+        $user->role = 'admin';
         $user->password = Hash::make($passWordAdmin);
         $user->save();
 
