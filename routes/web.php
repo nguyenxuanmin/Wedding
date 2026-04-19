@@ -28,6 +28,7 @@ use App\Http\Controllers\Client\ClientBlogController;
 use App\Http\Controllers\Client\ClientFaqController;
 use App\Http\Controllers\Client\ClientFeedbackController;
 use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\Client\ClientFacebookServiceController;
 
 Route::group(['middleware' => [SystemAuth::class]], function () {
     Route::group(['middleware' => [AdminAuth::class]], function () {
@@ -106,6 +107,8 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::post('/danh-gia', [ClientFeedbackController::class, 'feedback'])->name('send_feedback');
         Route::get('/auth/facebook', [FacebookController::class, 'redirect'])->name('login_facebook');
         Route::get('/auth/facebook/callback', [FacebookController::class, 'callback'])->name('callback');
+        Route::get('/privacy-policy', [ClientFacebookServiceController::class, 'privacyPolicy'])->name('privacy-policy');
+        Route::get('/data-deletion', [ClientFacebookServiceController::class, 'dataPeletion'])->name('data-deletion');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {
