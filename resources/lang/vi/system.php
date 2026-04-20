@@ -33,4 +33,6 @@ return [
     'select_feedback1' => 'Bạn có thể sử dụng form bên dưới hoặc',
     'select_feedback2' => 'sử dụng tài khoản facebook',
     'select_feedback3' => 'để đánh giá',
+    'max_size' => 'Ảnh không được vượt quá 2GB',
+    'allowed_type' => 'Chỉ chấp nhận định dạng ảnh: JPEG, PNG, GIF, WEBP',
 ];

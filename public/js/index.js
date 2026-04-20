@@ -62,11 +62,34 @@ $(document).ready(function() {
             const preview = $('#previewImageFeedbacks');
             preview.empty();
             const files = event.target.files;
+            const maxSize = 2 * 1024 * 1024 * 1024;
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            let hasError = false;
+            let errorMessage = '';
+
             if(files.length > 3){
-                alert(window.lang.alert_image_feedback);
+                errorMessage = window.lang.alert_image_feedback;
+                hasError = true;
+            } else {
+                $.each(files, function (i, file) {
+                    if (file.size > maxSize) {
+                        errorMessage = window.lang.max_size;
+                        hasError = true;
+                        return false; // break loop
+                    }
+                    if (!allowedTypes.includes(file.type)) {
+                        errorMessage = window.lang.allowed_type;
+                        hasError = true;
+                        return false; // break loop
+                    }
+                });
+            }
+
+            if (hasError) {
+                alert(errorMessage);
                 $('#imageFeedbacks').val('');
                 preview.empty();
-            }else{
+            } else {
                 $.each(files, function (i, file) {
                     const reader = new FileReader();
                     reader.onload = function (e) {
