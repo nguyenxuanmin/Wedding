@@ -62,7 +62,7 @@ $(document).ready(function() {
             const preview = $('#previewImageFeedbacks');
             preview.empty();
             const files = event.target.files;
-            const maxSize = 2 * 1024 * 1024 * 1024;
+            const maxSize = 2 * 1024 * 1024;
             const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
             let hasError = false;
             let errorMessage = '';

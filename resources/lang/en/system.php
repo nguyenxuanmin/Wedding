@@ -33,6 +33,6 @@ return [
     'select_feedback1' => 'You can use the form below or',
     'select_feedback2' => 'use your Facebook account',
     'select_feedback3' => 'to submit your feedback',
-    'max_size' => 'The image size must not exceed 2GB',
+    'max_size' => 'The image size must not exceed 2M',
     'allowed_type' => 'Only the following image formats are accepted: JPEG, PNG, GIF, WEBP',
 ];
