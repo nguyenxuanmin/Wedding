@@ -604,6 +604,31 @@ main{
     opacity: 0.5;
     cursor: not-allowed;
 }
+.social-share{
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+}
+.social-share a{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    line-height: 30px;
+}
+.social-share .facebook{
+    background: #1877F2;
+}
+.social-share .twitter{
+    background: #1DA1F2;
+}
+.social-share .pinterest{
+    background: #E60023;
+}
 @media (min-width: 1025px) {
     .image-lang:hover{
         opacity: 1;

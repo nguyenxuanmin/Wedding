@@ -29,10 +29,15 @@ class ClientAlbumController extends Controller
         $album = Album::with('albumPhotos')->where('slug',$slug)->firstOrFail();
         $titlePage = data_get($album,'name_'.$lang);
         $content = $this->adminService->convertOembedToIframe(data_get($album,'content_'.$lang));
+        $imageShare = "";
+        if (count($album->albumPhotos)){
+            $imageShare = asset('storage/albums/' . basename($album->albumPhotos[0]->image));
+        }
         return view('client.album-detail',[
             'titlePage' => $titlePage,
             'album' => $album,
-            'content' => $content
+            'content' => $content,
+            'imageShare' => $imageShare
         ]);
     }
 

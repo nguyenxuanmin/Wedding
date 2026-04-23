@@ -6,6 +6,7 @@
 
 @section('content')
     @include('client.layout.breadcrumb')
+    @include('client.layout.social-share')
     <div class="mb-lg-4 mb-3">
         @if (!empty($content))
             <div class="container">

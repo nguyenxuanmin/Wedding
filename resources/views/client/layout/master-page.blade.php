@@ -7,6 +7,10 @@
         @if (!empty($company->favicon))
             <link rel="icon" href="{{asset('storage/company/favicon/'.$company->favicon)}}" type="favicon">
         @endif
+        <meta property="og:title" content="@if(isset($titlePage)){{$titlePage}}@else{{$company->name}}@endif">
+        <meta property="og:description" content="@if(isset($titlePage)){{$titlePage}}@endif">
+        <meta property="og:image" content="@if(isset($imageShare) && !empty($imageShare)){{$imageShare}}@endif">
+        <meta property="og:url" content="{{ url()->current() }}">
         <title>@yield('title')</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

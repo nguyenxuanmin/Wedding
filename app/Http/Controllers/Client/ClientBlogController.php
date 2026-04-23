@@ -29,9 +29,14 @@ class ClientBlogController extends Controller
         $blog = Blog::where('slug',$slug)->firstOrFail();
         $titlePage = data_get($blog,'name_'.$lang);
         $content = $this->adminService->convertOembedToIframe(data_get($blog,'content_'.$lang));
+        $imageShare = "";
+        if (!empty($blog->image)){
+            $imageShare = asset('storage/blogs/' . basename($blog->image));
+        }
         return view('client.blog-detail',[
             'titlePage' => $titlePage,
-            'content' => $content
+            'content' => $content,
+            'imageShare' => $imageShare
         ]);
     }
 }

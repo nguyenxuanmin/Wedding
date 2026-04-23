@@ -29,9 +29,14 @@ class ClientVideoController extends Controller
         $video = Video::where('slug',$slug)->firstOrFail();
         $titlePage = data_get($video,'name_'.$lang);
         $content = $this->adminService->convertOembedToIframe(data_get($video,'content_'.$lang));
+        $imageShare = "";
+        if (!empty($video->image)){
+            $imageShare = asset('storage/videos/' . basename($video->image));
+        }
         return view('client.video-detail',[
             'titlePage' => $titlePage,
-            'content' => $content
+            'content' => $content,
+            'imageShare' => $imageShare
         ]);
     }
 }
