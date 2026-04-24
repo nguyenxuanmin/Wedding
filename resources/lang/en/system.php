@@ -32,8 +32,8 @@ return [
     'feedbacks' => 'feedbacks',
     'select_feedback1' => 'Please use',
     'select_feedback2' => 'your Google account',
-    'select_feedback3' => 'no Google account',
-    'select_feedback4' => 'to submit your feedback',
+    'select_feedback3' => 'to submit your feedback',
+    'select_feedback4' => "I don't have a Google account",
     'max_size' => 'The image size must not exceed 2M',
     'allowed_type' => 'Only the following image formats are accepted: JPEG, PNG, GIF, WEBP',
 ];

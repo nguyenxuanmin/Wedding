@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-xl-8 mb-3">
                     <p>{{__('system.content_feedback')}}</p>
-                    <div class="select_feedback" @if (!empty($name_feedback)) style="display: none;" @endif>{{__('system.select_feedback1')}} <a class="link-google" href="{{route('login_google')}}">{{__('system.select_feedback2')}}</a> / <a class="no-link-google" href="javascript:void(0);" onclick="showForm();">{{__('system.select_feedback3')}}</a> {{__('system.select_feedback4')}}.</div>
+                    <div class="select_feedback" @if (!empty($name_feedback)) style="display: none;" @endif>{{__('system.select_feedback1')}} <a class="link-google" href="{{route('login_google')}}">{{__('system.select_feedback2')}}</a> {{__('system.select_feedback3')}}. <a class="no-link-google" href="javascript:void(0);" onclick="showForm();">{{__('system.select_feedback4')}}</a></div>
                     <form id="submitFormFeedback" data-url-submit="{{route('send_feedback')}}" data-url-complete="{{route('index')}}"  @if (empty($name_feedback)) style="display: none;"  @endif>
                         <div class="mb-2">
                             <label>{{__('system.name')}}</label>

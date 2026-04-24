@@ -31,9 +31,9 @@ return [
     'thanks' => 'Cảm ơn đánh giá của bạn!',
     'feedbacks' => 'đánh giá',
     'select_feedback1' => 'Vui lòng sử dụng',
-    'select_feedback2' => 'tài khoản google',
-    'select_feedback3' => 'không có tài khoản google',
-    'select_feedback4' => 'để đánh giá',
+    'select_feedback2' => 'tài khoản google của bạn',
+    'select_feedback3' => 'để đánh giá',
+    'select_feedback4' => 'Tôi không có tài khoản google',
     'max_size' => 'Ảnh không được vượt quá 2M',
     'allowed_type' => 'Chỉ chấp nhận định dạng ảnh: JPEG, PNG, GIF, WEBP',
 ];
