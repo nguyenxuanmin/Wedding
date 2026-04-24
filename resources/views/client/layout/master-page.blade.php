@@ -72,6 +72,11 @@
                 js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0';
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
+
+            function showForm(){
+                $('.select_feedback').hide();
+                $('#submitFormFeedback').slideDown(300);
+            }
         </script>
     </body>
 </html>

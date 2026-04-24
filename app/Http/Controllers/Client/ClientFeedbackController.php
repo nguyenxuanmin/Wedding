@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use App\Models\Feedback;
 use App\Models\FeedbackPhoto;
+use Illuminate\Support\Facades\Auth;
 
 class ClientFeedbackController extends Controller
 {
@@ -18,10 +19,10 @@ class ClientFeedbackController extends Controller
 
     public function show(){
         $name_feedback = '';
-        $facebook_id = '';
+        $google_id = '';
         if ($this->user && $this->user->role === 'user') {
             $name_feedback = $this->user->name;
-            $facebook_id = $this->user->facebook_id;
+            $google_id = $this->user->google_id;
         }
         $titlePage = __('system.feedback');
         $feedbacks = Feedback::with('feedbackPhotos')->orderBy('created_at','desc')->paginate(15);
@@ -35,7 +36,7 @@ class ClientFeedbackController extends Controller
             'avgFeedback' => $avgFeedback,
             'stats' => $stats,
             'name_feedback' => $name_feedback,
-            'facebook_id' => $facebook_id
+            'google_id' => $google_id
         ]);
     }
 
@@ -47,7 +48,7 @@ class ClientFeedbackController extends Controller
         $imageFeedbacks = $request->file('image_feedback');
         $userAgent = $request->userAgent();
         $today = Carbon::today();
-        $facebook_id = $request->facebook_id;
+        $google_id = $request->google_id;
 
         if (empty($name)) {
             return response()->json([
@@ -71,7 +72,7 @@ class ClientFeedbackController extends Controller
         }
 
         if ($this->user && $this->user->role === 'user') {
-            $exists = Feedback::where('facebook_id', $this->user->facebook_id)
+            $exists = Feedback::where('google_id', $this->user->google_id)
                 ->where('feedback_date', $today)
                 ->exists();
         } else {
@@ -94,7 +95,7 @@ class ClientFeedbackController extends Controller
         $feedback->rating = $rating;
         $feedback->user_agent = $userAgent;
         $feedback->feedback_date = now()->toDateString();
-        $feedback->facebook_id = $facebook_id;
+        $feedback->google_id = $google_id;
         $feedback->save();
 
         if(!empty($imageFeedbacks)){
@@ -120,6 +121,8 @@ class ClientFeedbackController extends Controller
                 }
             }
         }
+
+        Auth::logout();
 
         return response()->json([
             'success' => true,

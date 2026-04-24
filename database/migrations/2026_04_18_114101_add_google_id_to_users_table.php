@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
             $table->string('role')->default('user');
         });
     }
@@ -23,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['facebook_id', 'role']);
+            $table->dropColumn(['google_id', 'role']);
         });
     }
 };

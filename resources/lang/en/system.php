@@ -30,9 +30,10 @@ return [
     'rated' => 'You have rated for today.',
     'thanks' => 'Thank you for your feedback!',
     'feedbacks' => 'feedbacks',
-    'select_feedback1' => 'You can use the form below or',
-    'select_feedback2' => 'use your Facebook account',
-    'select_feedback3' => 'to submit your feedback',
+    'select_feedback1' => 'Please use',
+    'select_feedback2' => 'your Google account',
+    'select_feedback3' => 'no Google account',
+    'select_feedback4' => 'to submit your feedback',
     'max_size' => 'The image size must not exceed 2M',
     'allowed_type' => 'Only the following image formats are accepted: JPEG, PNG, GIF, WEBP',
 ];

@@ -27,8 +27,7 @@ use App\Http\Controllers\Client\ClientAlbumController;
 use App\Http\Controllers\Client\ClientBlogController;
 use App\Http\Controllers\Client\ClientFaqController;
 use App\Http\Controllers\Client\ClientFeedbackController;
-use App\Http\Controllers\Auth\FacebookController;
-use App\Http\Controllers\Client\ClientFacebookServiceController;
+use App\Http\Controllers\Auth\GoogleController;
 
 Route::group(['middleware' => [SystemAuth::class]], function () {
     Route::group(['middleware' => [AdminAuth::class]], function () {
@@ -105,10 +104,8 @@ Route::group(['middleware' => [SystemAuth::class]], function () {
         Route::get('/faq', [ClientFaqController::class, 'show'])->name('faq_detail');
         Route::get('/danh-gia', [ClientFeedbackController::class, 'show'])->name('feedback');
         Route::post('/danh-gia', [ClientFeedbackController::class, 'feedback'])->name('send_feedback');
-        Route::get('/auth/facebook', [FacebookController::class, 'redirect'])->name('login_facebook');
-        Route::get('/auth/facebook/callback', [FacebookController::class, 'callback'])->name('callback');
-        Route::get('/privacy-policy', [ClientFacebookServiceController::class, 'privacyPolicy'])->name('privacy-policy');
-        Route::get('/data-deletion', [ClientFacebookServiceController::class, 'dataPeletion'])->name('data-deletion');
+        Route::get('/auth/google', [GoogleController::class, 'redirect'])->name('login_google');
+        Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('callback');
     });
 
     Route::get('/change-language/{lang}', function ($lang) {

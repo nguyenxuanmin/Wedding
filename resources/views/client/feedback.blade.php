@@ -11,8 +11,8 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-xl-8 mb-3">
                     <p>{{__('system.content_feedback')}}</p>
-                    <div class="select_feedback">{{__('system.select_feedback1')}} <a href="{{route('login_facebook')}}" @if (!empty($name_feedback)) class="disabled-link" @endif>{{__('system.select_feedback2')}}</a> {{__('system.select_feedback3')}}.</div>
-                    <form id="submitFormFeedback" data-url-submit="{{route('send_feedback')}}" data-url-complete="{{route('index')}}">
+                    <div class="select_feedback" @if (!empty($name_feedback)) style="display: none;" @endif>{{__('system.select_feedback1')}} <a class="link-google" href="{{route('login_google')}}">{{__('system.select_feedback2')}}</a> / <a class="no-link-google" href="javascript:void(0);" onclick="showForm();">{{__('system.select_feedback3')}}</a> {{__('system.select_feedback4')}}.</div>
+                    <form id="submitFormFeedback" data-url-submit="{{route('send_feedback')}}" data-url-complete="{{route('index')}}"  @if (empty($name_feedback)) style="display: none;"  @endif>
                         <div class="mb-2">
                             <label>{{__('system.name')}}</label>
                             <input type="text" name="name_feedback" class="form-control" value="{{$name_feedback}}" @if (!empty($name_feedback)) readonly @endif>
@@ -48,7 +48,7 @@
                         <div class="text-center">
                             <button type="submit" class="btn-submit">{{__('system.feedback')}}</button>
                         </div>
-                        <input type="hidden" name="facebook_id" value="{{$facebook_id}}" class="form-control">
+                        <input type="hidden" name="google_id" value="{{$google_id}}" class="form-control">
                     </form>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-4 mb-3">

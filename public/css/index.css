@@ -589,20 +589,25 @@ main{
     font-weight: bold;
     margin-bottom: 20px;
     color: red;
+    line-height: 35px;
 }
 .select_feedback a{
-    background: #35c0eb;
-    padding: 5px 10px;
+    padding: 2px 5px;
     border-radius: 10px;
     color: #fff;
+    white-space: nowrap;
 }
-.select_feedback a:hover{
-    color: red;
+.link-google{
+    background: #4285F4;
 }
-.disabled-link{
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: not-allowed;
+.link-google:hover{
+    background: #3367D6;
+}
+.no-link-google{
+    background: #888;
+}
+.no-link-google:hover{
+    background: #666;
 }
 .social-share{
     margin-bottom: 20px;

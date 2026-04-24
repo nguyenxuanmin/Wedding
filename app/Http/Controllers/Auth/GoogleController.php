@@ -9,24 +9,24 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class FacebookController extends Controller
+class GoogleController extends Controller
 {
     public function redirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function callback()
     {
         try {
-            $fbUser = Socialite::driver('facebook')->user();
-            $user = User::where('facebook_id', $fbUser->id)->first();
+            $googleUser = Socialite::driver('google')->user();
+            $user = User::where('google_id', $googleUser->getId())->first();
             if (!$user) {
                 $user = new User();
-                $user->name = $fbUser->name;
-                $user->user_name = $fbUser->name;
-                $user->email = $fbUser->email ?? $fbUser->id . '@facebook.com';
-                $user->facebook_id = $fbUser->id;
+                $user->name = $googleUser->getName();
+                $user->user_name = $googleUser->getName();
+                $user->email = $googleUser->getEmail();
+                $user->google_id = $googleUser->getId();
                 $user->password = Hash::make('123456');
                 $user->save();
             }
